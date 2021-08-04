@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const random = getRandomInt(1,151);
     fetchData(random);
 
+    btnactualizar();
+
 
 })
 
@@ -21,10 +23,23 @@ const fetchData = async (id) => {
     }
   }
 
-  const pintarCard = (pokemon)=> {
+  
+const btnactualizar = ()=> {
+  
+  const btn = document.querySelector('.btn-actualizar');
 
-    console.log(pokemon);
-    console.log(pokemon.name)
+ btn.addEventListener('click', () =>{
+
+  location.reload();
+
+ });
+
+}
+
+const pintarCard = (pokemon)=> {
+
+  /*   console.log(pokemon);
+    console.log(pokemon.name) */
 
     const imgPokemon = document.querySelector('.card-body-img');
     const nombre = document.querySelector('.card-body-title');
@@ -42,10 +57,6 @@ const fetchData = async (id) => {
 
     habilidades.children[2].innerHTML = `<h3>Especial</h3> 
     <p>${pokemon.abilities[0].ability.name}</p>`;
-
-   
-   
-    
 
     imgPokemon.setAttribute('src', pokemon.sprites.front_default);
     nombre.innerHTML = pokemon.name.toUpperCase();
